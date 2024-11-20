@@ -562,10 +562,14 @@ def s3_handler(event):
       song_vals = (TITLE, ALBUM, ARTIST, YEAR, MP3, IMG, GENRE)
       cur.execute(add_song, song_vals)
       db.commit()
+      cur.close()
+      db.close()
 
     except mysql.connector.Error as err:
       app.log.error("Failed to insert song: %s", err)
       db.rollback()
+      cur.close()
+      db.close()
 
 # perform a suffix match against supported extensions
 def _is_json(key):
@@ -575,7 +579,7 @@ def _is_json(key):
 1. Be sure to update the name of your S3 bucket.
 2. Update the `baseurl` of your S3 website address.
 3. Parse the song metadata extracted into `data`.
-4. Note that the DB connection and cursor are only needed once, since a Lambda function executes briefly and therefore cannot maintain a long-running DB connection.
+4. Note that the DB connection and cursor are only needed once, since a Lambda function executes briefly and therefore cannot maintain a long-running DB connection. Close those connections whether successful or excepted.
 
 ### Deploy Your Lambda Function
 
