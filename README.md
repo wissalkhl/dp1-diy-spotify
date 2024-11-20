@@ -12,7 +12,7 @@ In this project you will build a homemade, web-based music player that resembles
 > 
 > Keep in mind the goal of Data Projects is not mastery over all of these technical pieces, but practice putting together an end-to-end solution with a lot of moving parts.
 >
-> Also see this FAQ of common problems, errors, and mistakes we are seeing among students.
+> Also [refer to this FAQ](FAQ.md) of common problems, errors, and mistakes we are seeing among students.
 
 ## STEP ZERO - Overview
 
