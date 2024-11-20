@@ -44,6 +44,8 @@ db = mysql.connector.connect(user=DBUSER, host=DBHOST, password=DBPASS, database
 cur=db.cursor()
 ```
 
+> **NOTE**: In a long-running application like FastAPI, you should create your DB connection and cursor within each endpoint function, and close them before your `return` statement. In a "normal" script that runs momentarily, you only need to create the DB connection and cursor at the start, and close them at the end.
+
 ## 1. SELECT Statements
 
 Using all the pieces above, we can then build outo a simple example of a `SELECT` query.
